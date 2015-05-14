@@ -202,6 +202,9 @@ export function routeName(routeState) {
 // matching rules to it.
 export function routeModel(routeState) {
   if (routeState) {
+    if (routeState.render && routeState.render.controller) {
+      return [get(routeState.render.controller, 'model')];
+    }
     return [routeState._lf_model];
   }
 }
